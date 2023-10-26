@@ -71,6 +71,69 @@
           "test_input_type":"OPEN",
           "test_input_vars":"String WHERE=\"true\";",
           "to":0
+        },
+        {
+          "callbacks":{
+            "entries":[
+              {
+                "amiscript":[
+                  "{\n",
+                  "  CREATE TABLE _PROCEDURE AS EXECUTE SELECT ProcedureName, ProcedureType, ReturnType, Arguments, Options, DefinedBy FROM __PROCEDURE WHERE ${WHERE};\n",
+                  "}\n"
+                ],
+                "defaultDs":"AMI",
+                "hasDatamodel":true,
+                "linkedVariables":[
+                ],
+                "name":"onProcess",
+                "schema":{
+                  "tbl":[
+                    {
+                      "cols":[
+                        {
+                          "nm":"ProcedureName",
+                          "tp":"String"
+                        },
+                        {
+                          "nm":"ProcedureType",
+                          "tp":"String"
+                        },
+                        {
+                          "nm":"ReturnType",
+                          "tp":"String"
+                        },
+                        {
+                          "nm":"Arguments",
+                          "tp":"String"
+                        },
+                        {
+                          "nm":"Options",
+                          "tp":"String"
+                        },
+                        {
+                          "nm":"DefinedBy",
+                          "tp":"String"
+                        }
+                      ],
+                      "nm":"_PROCEDURE",
+                      "oc":"ask"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "datasources":[
+            "AMI"
+          ],
+          "lbl":"__PROCEDURE",
+          "lm":0,
+          "lower":[
+          ],
+          "queryMode":"startup",
+          "test_input_type":"OPEN",
+          "test_input_vars":"String WHERE=\"true\";",
+          "to":0
         }
       ]
     },
@@ -94,7 +157,6 @@
     {
       "portletBuilderId":"amidesktop",
       "portletConfig":{
-        "active":"__COLUMN",
         "amiPanelId":"@DESKTOP",
         "amiStyle":{
           "pt":"LAYOUT_DEFAULT"
@@ -102,7 +164,7 @@
         "windows":[
           {
             "header":true,
-            "height":448,
+            "height":399,
             "hidden":false,
             "left":483,
             "portlet":"__COLUMN",
@@ -111,6 +173,19 @@
             "title":"Window",
             "top":148,
             "width":956,
+            "zindex":2
+          },
+          {
+            "header":true,
+            "height":450,
+            "hidden":false,
+            "left":120,
+            "portlet":"__PROCEDURE",
+            "pos":1,
+            "state":"flt",
+            "title":"Window - 2",
+            "top":140,
+            "width":960,
             "zindex":1
           }
         ]
@@ -220,6 +295,104 @@
           "Options":"String",
           "Position":"Integer",
           "TableName":"String"
+        }
+      }
+    },
+    {
+      "portletBuilderId":"amistatictable",
+      "portletConfig":{
+        "amiCols":[
+          {
+            "fm":"ProcedureName",
+            "id":"ProcedureName",
+            "location":0,
+            "tl":"Procedure Name",
+            "tp":"text",
+            "width":317
+          },
+          {
+            "fm":"ProcedureType",
+            "id":"ProcedureType",
+            "location":1,
+            "tl":"Procedure Type",
+            "tp":"text",
+            "width":101
+          },
+          {
+            "fm":"ReturnType",
+            "id":"ReturnType",
+            "location":2,
+            "tl":"Return Type",
+            "tp":"text",
+            "width":80
+          },
+          {
+            "fm":"Arguments",
+            "id":"Arguments",
+            "location":3,
+            "tl":"Arguments",
+            "tp":"text",
+            "width":923
+          },
+          {
+            "fm":"Options",
+            "id":"Options",
+            "location":4,
+            "tl":"Options",
+            "tp":"text",
+            "width":54
+          },
+          {
+            "fm":"DefinedBy",
+            "id":"DefinedBy",
+            "location":5,
+            "tl":"Defined By",
+            "tp":"text",
+            "width":73
+          },
+          {
+            "id":"D",
+            "width":100
+          }
+        ],
+        "amiPanelId":"__PROCEDURE",
+        "amiStyle":{
+          "pt":"LAYOUT_DEFAULT"
+        },
+        "amiTitle":"_PROCEDURE",
+        "curtimeUpdateFrequency":1000,
+        "dm":[
+          {
+            "dmadn":"__PROCEDURE",
+            "dmtbid":[
+              "_PROCEDURE"
+            ]
+          }
+        ],
+        "dynamicColumns":"false",
+        "editDblClk":true,
+        "editInplace":false,
+        "editMenuTitle":"Edit Row(s)",
+        "editMode":0,
+        "editRerunDM":true,
+        "filters":{
+        },
+        "pinCnt":0,
+        "rollupEnabled":false,
+        "scrollToBottomOnAppend":false,
+        "showCommandMenu":true,
+        "showLastRuntime":true,
+        "titlePnl":{
+          "title":"_PROCEDURE"
+        },
+        "upid":"__PROCEDURE",
+        "varTypes":{
+          "Arguments":"String",
+          "DefinedBy":"String",
+          "Options":"String",
+          "ProcedureName":"String",
+          "ProcedureType":"String",
+          "ReturnType":"String"
         }
       }
     }
